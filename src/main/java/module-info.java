@@ -4,6 +4,9 @@ module org.jefeez.efoe {
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
+    requires com.github.kwhat.jnativehook;
+    requires opencv;
+
 
     opens org.jefeez.efoe to javafx.fxml;
     exports org.jefeez.efoe;
