@@ -1,6 +1,7 @@
 package org.jefeez.efoe;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.NativeHookException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +13,8 @@ import java.io.IOException;
 
 
 public class App extends Application {
+
+    private final Index index = new Index();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -30,11 +33,10 @@ public class App extends Application {
     }
 
     @Override
-    public void stop() {
-        try {
-            GlobalScreen.unregisterNativeHook();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    public void stop() throws NativeHookException {
+        GlobalScreen.unregisterNativeHook();
+        if (index.scheduler() != null && !index.scheduler().isShutdown()) {
+            index.scheduler().shutdown();
         }
     }
 
