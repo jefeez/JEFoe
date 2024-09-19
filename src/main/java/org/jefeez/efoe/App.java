@@ -6,10 +6,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 
+import java.awt.*;
 import java.io.IOException;
 
 
@@ -26,6 +28,11 @@ public class App extends Application {
         stage.setTitle("EFoe");
         stage.setAlwaysOnTop(true);
         stage.setResizable(false);
+        try {
+            stage.getIcons().add(new Image("file:/home/jeferson/Documents/Projects/EFoe/images/grapes.png"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX(screenBounds.getMaxX() - stage.getWidth());
         stage.setY(screenBounds.getMinX());
