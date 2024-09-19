@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +25,10 @@ public class Controller implements Initializable, NativeKeyListener {
     public Button btnStart;
     @FXML
     public Label lbStatus;
+    @FXML
+    public ToggleGroup type;
+    public RadioButton rbChain;
+    public RadioButton rbRandom;
 
     private Index index = new Index();
 
@@ -74,11 +80,18 @@ public class Controller implements Initializable, NativeKeyListener {
             this.btnPause.setDisable(false);
             this.isPaused = false;
             this.index.setPaused(false);
+            this.rbChain.setDisable(true);
+            this.rbRandom.setDisable(true);
+            RadioButton selected = (RadioButton)this.type.getSelectedToggle();
+            this.index.setType(selected.getText());
+
         } else {
             this.index.shutdown();
             this.lbStatus.setText("STOPPED");
             this.btnStart.setText("START");
             this.btnPause.setDisable(true);
+            this.rbChain.setDisable(false);
+            this.rbRandom.setDisable(false);
         }
     }
 
@@ -97,4 +110,9 @@ public class Controller implements Initializable, NativeKeyListener {
     }
 
 
+    public void onChain(ActionEvent event) {
+    }
+
+    public void onRandom(ActionEvent event) {
+    }
 }

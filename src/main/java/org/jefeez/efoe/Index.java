@@ -9,6 +9,11 @@ import java.util.concurrent.TimeUnit;
 public class Index {
 
     private boolean isPaused;
+    private  String type;
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     private static ScheduledExecutorService scheduled;
 
@@ -18,7 +23,8 @@ public class Index {
            Index.scheduled = Executors.newScheduledThreadPool(1);
            Index.scheduled.scheduleWithFixedDelay(() -> {
                if (!this.isPaused) {
-                   battlefield.chain();
+                   if (type.equals("CHAIN")) battlefield.chain();
+                   if (type.equals("RANDOM")) battlefield.random();
                }
            }, 0, 25, TimeUnit.MILLISECONDS);
        }

@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -118,7 +120,22 @@
                 </VBox>
                 <VBox layoutX="11.0" layoutY="138.0" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: #9ca3af;">
                     <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton fx:id="rbChain" layoutX="133.0" layoutY="12.0" mnemonicParsing="false" onAction="#onChain" selected="true" text="CHAIN">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="type" />
+                           </toggleGroup>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="11.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="rbRandom" layoutX="191.0" layoutY="12.0" mnemonicParsing="false" onAction="#onRandom" text="RANDOM" toggleGroup="$type">
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="11.0" />
+                           </font>
+                        </RadioButton>
+                     </children></Pane>
                     </children>
                     <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
