@@ -14,8 +14,8 @@ public class Index {
        if (Index.scheduled == null || Index.scheduled.isShutdown()) {
            Index.scheduled = Executors.newScheduledThreadPool(1);
            Index.scheduled.scheduleWithFixedDelay(() -> {
-               if (this.isPaused) {
-                   System.out.println("UNPAUSED");
+               if (!this.isPaused) {
+                   System.out.println("RUNNING");
                } else {
                    System.out.println("PAUSED");
                }
