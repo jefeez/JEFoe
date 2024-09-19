@@ -77,7 +77,9 @@ public class Controller implements Initializable, NativeKeyListener {
 
             // onPause
             if (e.getKeyCode() == 25) {
-                this.pause();
+                if (isStarted) {
+                    this.pause();
+                }
             }
         });
     }
