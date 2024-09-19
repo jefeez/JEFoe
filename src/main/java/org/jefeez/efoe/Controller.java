@@ -98,7 +98,7 @@ public class Controller implements Initializable, NativeKeyListener {
         if (this.isStarted) {
             this.index.run();
             this.lbStatus.setText("RUNNING");
-            this.btnStart.setText("STOP");
+            this.btnStart.setText("STOP(S)");
             this.btnPause.setDisable(false);
             this.isPaused = false;
             this.index.setPaused(false);
@@ -111,7 +111,7 @@ public class Controller implements Initializable, NativeKeyListener {
         } else {
             this.index.shutdown();
             this.lbStatus.setText("STOPPED");
-            this.btnStart.setText("START");
+            this.btnStart.setText("START(S)");
             this.btnPause.setDisable(true);
             this.rbChain.setDisable(false);
             this.rbRandom.setDisable(false);
@@ -127,12 +127,12 @@ public class Controller implements Initializable, NativeKeyListener {
         this.index.setPaused(this.isPaused);
         if (this.isPaused) {
             this.lbStatus.setText("PAUSED");
-            this.btnPause.setText("UNPAUSED");
+            this.btnPause.setText("UNPAUSED(P)");
             //this.btnStart.setDisable(true);
             this.timeline.pause();
         } else {
             this.lbStatus.setText("RUNNING");
-            this.btnPause.setText("PAUSE");
+            this.btnPause.setText("PAUSE(P)");
             this.btnStart.setDisable(false);
             this.timeline.play();
         }

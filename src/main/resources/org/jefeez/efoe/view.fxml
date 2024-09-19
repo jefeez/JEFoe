@@ -22,7 +22,7 @@
             <children>
                 <VBox prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Button fx:id="btnStart" mnemonicParsing="false" onAction="#onStart" prefHeight="60.0" prefWidth="95.0" text="START">
+                        <Button fx:id="btnStart" mnemonicParsing="false" onAction="#onStart" prefHeight="60.0" prefWidth="95.0" text="START(S)">
                             <font>
                                 <Font name="JetBrains Mono Regular" size="11.0" />
                             </font>
@@ -34,7 +34,7 @@
                 </VBox>
                 <VBox layoutX="16.0" layoutY="16.0" prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Button fx:id="btnPause" disable="true" mnemonicParsing="false" onAction="#onPause" prefHeight="60.0" prefWidth="95.0" text="PAUSE">
+                        <Button fx:id="btnPause" disable="true" mnemonicParsing="false" onAction="#onPause" prefHeight="60.0" prefWidth="95.0" text="PAUSE(P)">
                             <font>
                                 <Font name="JetBrains Mono Regular" size="11.0" />
                             </font>
