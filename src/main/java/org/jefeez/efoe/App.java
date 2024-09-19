@@ -4,7 +4,9 @@ import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 
@@ -24,6 +26,9 @@ public class App extends Application {
         stage.setTitle("EFoe");
         stage.setAlwaysOnTop(true);
         stage.setResizable(false);
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX(screenBounds.getMaxX() - stage.getWidth());
+        stage.setY(screenBounds.getMinX());
         stage.setScene(scene);
         stage.show();
     }
