@@ -59,7 +59,7 @@
                     <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <Label layoutX="14.0" layoutY="13.0" text="00:00">
+                                <Label fx:id="lbTime" layoutX="14.0" layoutY="13.0" text="00:00">
                                     <font>
                                         <Font name="JetBrains Mono Regular" size="10.0" />
                                     </font>
@@ -106,7 +106,7 @@
                                         <Font name="JetBrains Mono Regular" size="10.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="14.0" layoutY="13.0" text="0">
+                                <Label fx:id="lbBattles" layoutX="14.0" layoutY="13.0" text="0">
                                     <font>
                                         <Font name="JetBrains Mono Regular" size="10.0" />
                                     </font>

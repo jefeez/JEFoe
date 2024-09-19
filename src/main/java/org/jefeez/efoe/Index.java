@@ -1,5 +1,7 @@
 package org.jefeez.efoe;
 
+import javafx.application.Platform;
+import javafx.scene.control.Label;
 import org.jefeez.efoe.domain.Battlefield;
 
 import java.util.concurrent.Executors;
@@ -9,28 +11,47 @@ import java.util.concurrent.TimeUnit;
 public class Index {
 
     private boolean isPaused;
-    private  String type;
+
+    private String type = "CHAIN";
+    private Label lbBattles;
 
     public void setType(String type) {
         this.type = type;
     }
 
+    public Label getLbBattles() {
+        return lbBattles;
+    }
+
+    public void setLbBattles(Label lbBattles) {
+        this.lbBattles = lbBattles;
+    }
+
+
     private static ScheduledExecutorService scheduled;
 
     public void run() {
-       if (Index.scheduled == null || Index.scheduled.isShutdown()) {
-           Battlefield battlefield = new Battlefield();
-           Index.scheduled = Executors.newScheduledThreadPool(1);
-           Index.scheduled.scheduleWithFixedDelay(() -> {
-               if (!this.isPaused) {
-                   if (type.equals("CHAIN")) battlefield.chain();
-                   if (type.equals("RANDOM")) battlefield.random();
-               }
-           }, 0, 25, TimeUnit.MILLISECONDS);
-       }
+        if (Index.scheduled == null || Index.scheduled.isShutdown()) {
+            Battlefield battlefield = new Battlefield();
+            Index.scheduled = Executors.newScheduledThreadPool(1);
+            Index.scheduled.scheduleWithFixedDelay(() -> {
+                try {
+                    if (!this.isPaused) {
+                        if (type.equals("CHAIN")) battlefield.chain();
+                        if (type.equals("RANDOM")) battlefield.random();
+                        Platform.runLater(() -> {
+                            this.getLbBattles().setText(Integer.toString(battlefield.getBattleCount()));
+                        });
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+                System.gc();
+            }, 0, 25, TimeUnit.MILLISECONDS);
+        }
     }
 
-    public void shutdown () {
+    public void shutdown() {
         scheduled.shutdown();
     }
 

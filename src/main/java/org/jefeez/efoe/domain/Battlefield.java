@@ -44,7 +44,6 @@ public class Battlefield {
         next.run(screenshot, battle);
         if (result.run(screenshot, battle)) result.resetables(attack, replace, battle, next);
         reward.run(screenshot, result);
-        System.gc();
     }
 
     public void random() {
@@ -55,7 +54,10 @@ public class Battlefield {
         next.run(screenshot);
         if (result.run(screenshot)) result.resetables(attack, replace, battle, next);
         reward.run(screenshot);
-        System.gc();
+    }
+
+    public int getBattleCount() {
+        return this.battle.getCount();
     }
 
 
