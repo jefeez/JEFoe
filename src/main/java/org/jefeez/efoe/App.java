@@ -18,6 +18,7 @@ import java.io.IOException;
 
 public class App extends Application {
 
+    public static Stage primaryStage;
     private final Index index = new Index();
 
     @Override
@@ -29,13 +30,14 @@ public class App extends Application {
         stage.setAlwaysOnTop(true);
         stage.setResizable(false);
         try {
-            stage.getIcons().add(new Image("file:/home/jeferson/Documents/Projects/EFoe/images/grapes.png"));
+            stage.getIcons().add(new Image("file:/home/jeferson/Documents/Projects/EFoe/images/grapes.png-"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX(screenBounds.getMaxX() - stage.getWidth());
         stage.setY(screenBounds.getMinX());
+        primaryStage = stage;
         stage.setScene(scene);
         stage.show();
     }
@@ -51,5 +53,7 @@ public class App extends Application {
             index.scheduler().shutdown();
         }
     }
+
+
 
 }

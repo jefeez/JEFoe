@@ -35,8 +35,9 @@ public class Index {
             Battlefield battlefield = new Battlefield();
             Index.scheduled = Executors.newScheduledThreadPool(1);
             Index.scheduled.scheduleWithFixedDelay(() -> {
+                System.out.println(App.primaryStage.isFocused());
                 try {
-                    if (!this.isPaused) {
+                    if (!this.isPaused && !App.primaryStage.isFocused()) {
                         if (type.equals("CHAIN")) battlefield.chain();
                         if (type.equals("RANDOM")) battlefield.random();
                         Platform.runLater(() -> {

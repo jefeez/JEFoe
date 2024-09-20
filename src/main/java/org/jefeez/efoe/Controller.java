@@ -71,16 +71,16 @@ public class Controller implements Initializable, NativeKeyListener {
     public void nativeKeyPressed(NativeKeyEvent e) {
         Platform.runLater(() -> {
             // onStart
-            if (e.getKeyCode() == 31) {
-                this.start();
-            }
-
-            // onPause
-            if (e.getKeyCode() == 25) {
-                if (isStarted) {
-                    this.pause();
-                }
-            }
+//            if (e.getKeyCode() == 31) {
+//                this.start();
+//            }
+//
+//            // onPause
+//            if (e.getKeyCode() == 25) {
+//                if (isStarted) {
+//                    this.pause();
+//                }
+//            }
         });
     }
 
