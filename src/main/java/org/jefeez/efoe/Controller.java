@@ -11,10 +11,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -29,15 +26,11 @@ public class Controller implements Initializable, NativeKeyListener {
     @FXML
     public Label lbStatus;
     @FXML
-    public ToggleGroup type;
-    @FXML
-    public RadioButton rbChain;
-    @FXML
-    public RadioButton rbRandom;
-    @FXML
     public Label lbTime;
     @FXML
     public Label lbBattles;
+    @FXML
+    public Slider slThreshold;
 
     private Index index = new Index();
     private Timeline timeline;
@@ -104,23 +97,21 @@ public class Controller implements Initializable, NativeKeyListener {
             this.btnPause.setDisable(false);
             this.isPaused = false;
             this.index.setPaused(false);
-            this.rbChain.setDisable(true);
-            this.rbRandom.setDisable(true);
-            RadioButton selected = (RadioButton)this.type.getSelectedToggle();
-            this.index.setType(selected.getText());
             this.index.setLbBattles(this.lbBattles);
+            this.index.setSlThreshold(this.slThreshold.getValue());
+            this.slThreshold.setDisable(true);
+            System.out.println((this.slThreshold.getValue()));
             this.timeline.play();
         } else {
             this.index.shutdown();
             this.lbStatus.setText("STOPPED");
             this.btnStart.setText("START(S)");
             this.btnPause.setDisable(true);
-            this.rbChain.setDisable(false);
-            this.rbRandom.setDisable(false);
             this.lbBattles.setText("00");
             this.lbTime.setText("00:00");
             this.timeline.stop();
             this.timer = 0;
+            this.slThreshold.setDisable(false);
         }
     }
 

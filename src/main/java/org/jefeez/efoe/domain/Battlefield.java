@@ -21,13 +21,13 @@ public class Battlefield {
     private State result;
     private State reward;
 
-    public Battlefield() {
-        this.attack = new State(this.png_attack, KeyEvent.VK_A, 0.9f);
-        this.replace = new State(this.png_replace_units, KeyEvent.VK_R, 0.9f, 300);
-        this.battle = new State(this.png_auto_battle, KeyEvent.VK_B, 0.9f);
-        this.next = new State(this.png_start_next_battle, KeyEvent.VK_B, 0.9f);
-        this.result = new State(png_result_of_battle, KeyEvent.VK_ESCAPE, 0.9f);
-        this.reward = new State(png_spoils_of_war, KeyEvent.VK_ESCAPE, 0.9f);
+    public Battlefield(double threshould) {
+        this.attack = new State(this.png_attack, KeyEvent.VK_A, threshould);
+        this.replace = new State(this.png_replace_units, KeyEvent.VK_R, threshould, 500);
+        this.battle = new State(this.png_auto_battle, KeyEvent.VK_B, threshould);
+        this.next = new State(this.png_start_next_battle, KeyEvent.VK_B, threshould);
+        this.result = new State(png_result_of_battle, KeyEvent.VK_ESCAPE, threshould);
+        this.reward = new State(png_spoils_of_war, KeyEvent.VK_ESCAPE, threshould);
     }
 
     private Mat screenshot() {

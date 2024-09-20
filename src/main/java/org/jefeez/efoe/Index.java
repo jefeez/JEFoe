@@ -14,10 +14,16 @@ public class Index {
 
     private String type = "CHAIN";
     private Label lbBattles;
+    private double slThreshold = 0.9f;
 
-    public void setType(String type) {
-        this.type = type;
+    public double getSlThreshold() {
+        return slThreshold;
     }
+
+    public void setSlThreshold(double slThreshold) {
+        this.slThreshold = slThreshold;
+    }
+
 
     public Label getLbBattles() {
         return lbBattles;
@@ -32,10 +38,10 @@ public class Index {
 
     public void run() {
         if (Index.scheduled == null || Index.scheduled.isShutdown()) {
-            Battlefield battlefield = new Battlefield();
+            Battlefield battlefield = new Battlefield(this.getSlThreshold());
             Index.scheduled = Executors.newScheduledThreadPool(1);
             Index.scheduled.scheduleWithFixedDelay(() -> {
-                System.out.println(App.primaryStage.isFocused());
+                //System.out.println(App.primaryStage.isFocused());
                 try {
                     if (!this.isPaused && !App.primaryStage.isFocused()) {
                         if (type.equals("CHAIN")) battlefield.chain();
